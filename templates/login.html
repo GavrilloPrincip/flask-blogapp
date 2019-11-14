@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block body %}
+{% from "/includes/formhelpers.html" import render_field %}
+<h1>Giriş yapın</h1>
+<hr>
+<form method="post">
+    {{ render_field(form.username,class = "form-control") }}
+    {{ render_field(form.password,class = "form-control") }}
+    <button class="btn btn-warning" type="submit">Giriş</button>
+</form>
+{{q}}
+{% endblock body %}

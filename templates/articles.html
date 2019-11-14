@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% block body %}
+<h2>Makaleler</h2>
+<br>
+<br>
+<br>
+
+{% if result %}
+  <form action="/search" method = "post">
+    <input type="text" class="input-lg" placeholder="Ara..." name="keyword">
+    <span class="input-group-btn">
+    <button class="btn btn-danger btn-md" type="submit">Search</button>
+    </span>
+  </form>
+  <br>
+  <br>
+  <table class="table table-hover">
+    <thead>
+    <tr class="table-danger">
+      <th scope="col">id</th>
+      <th scope="col">title</th>
+      <th scope="col">author</th>
+      <th scope="col">date</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in result %}
+    <tr>
+      <th scope="row">{{i["id"]}}</th>
+      <td><a href="/article/{{i['id']}}">{{i["title"]}}</a></td>
+      <td>{{i["author"]}}</td>
+      <td>{{i["cdate"]}}</td>
+    </tr> 
+  {% endfor %}
+  </tbody>
+  </table>
+
+
+{% else %}
+  <div class="alert alert-danger" role="alert">Henüz makale eklenmemiş</div>
+{% endif %}
+{% endblock body %}
